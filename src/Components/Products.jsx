@@ -1,11 +1,9 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { add } from '../store/cartSlice'
+import ProductItem from './ProductItem'
 
 const Products = () => {
 
-    const dispatch = useDispatch();
     const [products, setProducts] = useState([])
 
     useEffect(() => {
@@ -18,21 +16,11 @@ const Products = () => {
         fetchProducts()
     },[])
 
-    const addItemHandler = (product) => {
-        dispatch(add(product))
-    }
-
   return (
     <div className="productsWrapper">
         {
             products.map(product => (
-                <div className="card" key={product.id}>
-                    <img src={product.image} alt="" />
-                    {/* <h4>{product.title}</h4> */}
-                    <h4>{product.title.substring(0,12)}</h4>
-                    <h5>${product.price}</h5>
-                    <button className="btn" onClick={() => addItemHandler(product)}>Add to Cart</button>
-                </div>
+               <ProductItem product={product} />
             ))
         }
     </div>

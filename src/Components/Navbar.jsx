@@ -1,17 +1,30 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
 
   const itemCounter = useSelector((state) => state.cart)
+  const wishItemCounter = useSelector((state) => state.wishList)
+
+  const activeCss = ({isActive}) => {
+      return {
+        fontWeight: isActive ? 'bolder' : 'normal',
+        color: isActive ? '#513282' : 'black',
+      }
+  }  
 
   return (
     <div style={{display: 'flex', justifyContent: 'space-between'}}>
         <span className='logo'>REDUX STORE</span>
         <div>
-            <Link className='navLink' to='/'>Home</Link>
-            <Link className='navLink' to='/cart'>Cart</Link>
+            <NavLink style={activeCss} className='navLink' to='/'>Home</NavLink>
+            <NavLink style={activeCss} className='navLink' to='/contact'>Contact</NavLink>
+            <NavLink style={activeCss} className='navLink' to='/wishList'>WishList</NavLink>
+            <NavLink style={activeCss} className='navLink' to='/cart'>Cart</NavLink>
+            <span className='cartCount'>
+                WishList : {wishItemCounter.length}
+            </span>
             <span className='cartCount'>
                 Cart Items : {itemCounter.length}
             </span>

@@ -6,7 +6,9 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 import Home from './Components/Home'
 import Cart from './Components/Cart'
+import Contact from './Components/Contact'
 import Navbar from "./Components/Navbar";
+import WishItem from "./Components/WishItem";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />}></Route>
+            <Route path="/contact" element={<Contact />}></Route>
+            <Route path="/wishList" element={<WishItem />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
           </Routes>
         </BrowserRouter>

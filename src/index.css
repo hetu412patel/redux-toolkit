@@ -21,6 +21,10 @@ img {
     border-radius: 10px;
 }
 
+.fa-solid:hover{
+    color: green;
+}
+
 .productsWrapper {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
