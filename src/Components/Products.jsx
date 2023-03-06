@@ -1,10 +1,13 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import ProductItem from './ProductItem'
 
 const Products = () => {
 
     const [products, setProducts] = useState([])
+    const liked = useSelector(state => state.wishList.products)
+    console.log("hgvsdj",liked)
 
     useEffect(() => {
         const fetchProducts = async() => {
@@ -20,7 +23,8 @@ const Products = () => {
     <div className="productsWrapper">
         {
             products.map(product => (
-               <ProductItem product={product} />
+               <ProductItem product={product} 
+               like={liked.indexOf(product.id) === -1 ? false : true}/>
             ))
         }
     </div>

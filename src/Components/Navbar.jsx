@@ -5,7 +5,10 @@ import { NavLink } from 'react-router-dom'
 const Navbar = () => {
 
   const itemCounter = useSelector((state) => state.cart)
-  const wishItemCounter = useSelector((state) => state.wishList)
+  const wishItemCounter = useSelector((state) => state.wishList.products)
+  // console.log("hgvjsda",wishItemCounter);
+  // console.log("hgvjsda",wishItemCounter.length);
+ 
 
   const activeCss = ({isActive}) => {
       return {

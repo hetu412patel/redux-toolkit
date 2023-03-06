@@ -1,17 +1,15 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { removeWishItem }from '../store/wishListSlice'
+import { toggleListItem } from '../store/wishListSlice'
 
 const WishItem = () => {
 
     const dispatch = useDispatch()
-    const WishItemList = useSelector((state) => state.wishList)
+    const WishItemList = useSelector((state) => state.wishList.products)
 
-    const whishitem = useSelector(state => state)
-    console.log("whishlist", whishitem)
-
-    const removeWishItemHandler = (productId) => {
-        dispatch(removeWishItem(productId))
+    const WishItemHandler = (productId) => {
+        dispatch(toggleListItem(productId))
+        console.log("title",WishItemHandler.title)
     }
 
   return (
@@ -19,11 +17,11 @@ const WishItem = () => {
       <h3 className="cartWrapper">
         {
             WishItemList.map(product => (
-            <div className="cartCard">
+            <div className="cartCard" key={product.id}>
               <img src={product.image} alt="" />
               <h5>{product.title}</h5>
               <h5>${product.price}</h5>
-              <button className='btn' onClick={() => removeWishItemHandler(product.id)}>Remove</button>
+              <button className='btn' onClick={() => WishItemHandler(product.id)}>Remove</button>
             </div>
           ))
         }
